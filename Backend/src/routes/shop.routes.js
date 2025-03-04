@@ -1,11 +1,13 @@
 import express from "express";
-import { createLink, getUserLinks, deleteLink } from "../controllers/shop.controller.js";
 import { authMiddleware } from "../middlewares/authMiddleware.js";
+import { createShop, deleteShop, getUserShopLinks } from "../controllers/shop.controller.js";
+
+
 
 const shopRouter = express.Router();
 
-shopRouter.post("/createShop", authMiddleware, createLink);
-shopRouter.get("/", authMiddleware, getUserLinks);
-shopRouter.delete("/:linkId", authMiddleware, deleteLink);
+shopRouter.post("/createShop", authMiddleware, createShop);
+shopRouter.get("/", authMiddleware, getUserShopLinks);
+shopRouter.delete("/:linkId", authMiddleware, deleteShop);
 
 export default shopRouter;
